@@ -3,4 +3,12 @@
 
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
+
+    <string name="category_prompt">Choose a situation</string>
+    <string-array name="category_arrays">
+        <item>Drunk</item>
+        <item>Danger</item>
+        <item>Lost</item>
+    </string-array>
+
 </resources>

@@ -9,6 +9,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 import android.util.Log;
+import android.widget.Spinner;
+import android.view.View.OnClickListener;
+import android.widget.AdapterView.OnItemSelectedListener;
 
 import com.firebase.client.ChildEventListener;
 import com.firebase.client.DataSnapshot;
@@ -21,6 +24,8 @@ public class MainActivity extends AppCompatActivity {
     ArrayList<String> issues = new ArrayList<String>();
 
     Firebase contactRef;
+    private Spinner spinner;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -124,6 +129,11 @@ public class MainActivity extends AppCompatActivity {
 
 
 
+    }
+
+    public void addListenerOnSpinnerItemSelection() {
+        spinner = (Spinner) findViewById(R.id.categories_spinner);
+        spinner.setOnItemSelectedListener(new CustomOnItemSelectedListener());
     }
 
     // Function for adding contact button

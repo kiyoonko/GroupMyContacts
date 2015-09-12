@@ -3,4 +3,31 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:text="Name"
+        android:ems="10"
+        android:id="@+id/name"
+        android:layout_gravity="center_horizontal"
+        android:layout_margin="30dp"/>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="phone"
+        android:text="Contact Number"
+        android:ems="10"
+        android:id="@+id/phoneNum"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"/>
+
+    <Spinner
+        android:id="@+id/categories_spinner"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:entries="@array/category_arrays"
+        android:prompt="@string/category_prompt" />
+
 </LinearLayout>
