@@ -17,10 +17,10 @@
         android:layout_height="wrap_content"
         android:text="New Button"
         android:id="@+id/firstbutton"
-        android:layout_above="@+id/secondbutton"
+        android:layout_below="@+id/textView"
         android:layout_alignLeft="@+id/secondbutton"
         android:layout_alignStart="@+id/secondbutton"
-        android:layout_marginBottom="59dp" />
+        android:layout_marginTop="53dp" />
 
     <Button
         style="?android:attr/buttonStyleSmall"
@@ -28,8 +28,9 @@
         android:layout_height="wrap_content"
         android:text="New Button"
         android:id="@+id/secondbutton"
-        android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_below="@+id/firstbutton"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="37dp" />
 
     <Button
         style="?android:attr/buttonStyleSmall"
@@ -37,9 +38,20 @@
         android:layout_height="wrap_content"
         android:text="New Button"
         android:id="@+id/thirdbutton"
+        android:layout_marginTop="44dp"
         android:layout_below="@+id/secondbutton"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="64dp" />
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Update Contacts"
+        android:id="@+id/update"
+        android:layout_marginBottom="46dp"
+        android:layout_alignParentBottom="true"
+        android:layout_toRightOf="@+id/thirdbutton"
+        android:layout_toEndOf="@+id/thirdbutton" />
 
 
 </RelativeLayout>

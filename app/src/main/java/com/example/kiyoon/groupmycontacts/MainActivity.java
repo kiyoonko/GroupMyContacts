@@ -7,6 +7,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -28,13 +29,11 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
-                // I'll remove this toast and add a method design arraylist that takes it to another page and displays page 2
-
-                //Intent intent = new Intent(MainActivity.this, secondpage.class);
-                //startActivity(intent);
 
 
-                // I need to make a new intent and then a new activity.
+                //call the method that would send the sms.
+
+
             }
         });
 
@@ -47,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v)
             {
-                // I'll remove this toast and add a method design arraylist that takes it to another page and displays page 2
+                //add the method that would send the sms
 
             }
         });
@@ -61,8 +60,22 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v)
             {
-                // I'll remove this toast and add a method design arraylist that takes it to another page and displays page 2
+                // add the method that would send the sms.
 
+            }
+        });
+
+        final Button btn_contacts;
+        btn_contacts = (Button)findViewById(R.id.update);
+        btn_two.setOnClickListener(new View.OnClickListener()
+        {
+
+            @Override
+            public void onClick(View v)
+            {
+                // go to the other page
+                Intent intent = new Intent(MainActivity.this, contactUpdate.class);
+                startActivity(intent);
             }
         });
 
