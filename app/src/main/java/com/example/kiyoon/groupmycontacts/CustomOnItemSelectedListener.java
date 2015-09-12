@@ -2,11 +2,11 @@ package com.example.kiyoon.groupmycontacts;
 
 /**
  * Created by mzwee on 9/12/15.
-*/
-        import android.view.View;
-        import android.widget.AdapterView;
-        import android.widget.AdapterView.OnItemSelectedListener;
-        import android.widget.Toast;
+ */
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemSelectedListener;
+import android.widget.Toast;
 
 public class CustomOnItemSelectedListener implements OnItemSelectedListener {
 

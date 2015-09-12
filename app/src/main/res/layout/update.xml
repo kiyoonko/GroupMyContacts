@@ -7,7 +7,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:inputType="textPersonName"
-        android:text="Name"
+        android:hint="Name"
         android:ems="10"
         android:id="@+id/name"
         android:layout_gravity="center_horizontal"
@@ -17,7 +17,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:inputType="phone"
-        android:text="Contact Number"
+        android:hint="Contact Number"
         android:ems="10"
         android:id="@+id/phoneNum"
         android:layout_marginLeft="30dp"
@@ -29,5 +29,17 @@
         android:layout_height="wrap_content"
         android:entries="@array/category_arrays"
         android:prompt="@string/category_prompt" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text = "submit"
+        android:id="@+id/submit_area"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text = "clear selected list"
+        android:id="@+id/clearlist"/>
 
 </LinearLayout>
