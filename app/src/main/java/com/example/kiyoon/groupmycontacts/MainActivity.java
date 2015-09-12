@@ -68,6 +68,8 @@ public class MainActivity extends AppCompatActivity {
         btn_one = (Button)findViewById(R.id.firstbutton);
         btn_one.setText(issues.get(category));
 
+
+
         btn_one.setOnClickListener(new View.OnClickListener() {
 
 
