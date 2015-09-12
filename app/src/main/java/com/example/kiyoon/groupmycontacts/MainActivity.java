@@ -8,14 +8,56 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
+import android.util.Log;
+
+import com.firebase.client.ChildEventListener;
+import com.firebase.client.DataSnapshot;
+import com.firebase.client.Firebase;
+import com.firebase.client.FirebaseError;
 
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
     ArrayList<String> issues = new ArrayList<String>();
+
+    Firebase contactRef;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        //Firebase set up
+        Firebase.setAndroidContext(this);
+        contactRef = new Firebase("https://groupmycontacts.firebaseio.com/").child("contacts");
+
+        //Update data from Firebase for favorite contacts
+        contactRef.addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                Contact user = dataSnapshot.getValue(Contact.class);
+            }
+
+            @Override
+            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+
+            }
+
+            @Override
+            public void onChildRemoved(DataSnapshot dataSnapshot) {
+
+            }
+
+            @Override
+            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+
+            }
+
+            @Override
+            public void onCancelled(FirebaseError firebaseError) {
+                Log.e("Contact", "The read failed: " + firebaseError.getMessage());
+            }
+        });
+
+
         setContentView(R.layout.activity_main); //turns xml into actual displayed on screen.
         issues.add("Drunk");
         issues.add("Danger");
@@ -82,6 +124,12 @@ public class MainActivity extends AppCompatActivity {
 
 
 
+    }
+
+    // Function for adding contact button
+    public void onAddButtonClick() {
+        Contact user = new Contact("name", "phoneNum", 1);
+        contactRef.push().setValue(user);
     }
 
     @Override
