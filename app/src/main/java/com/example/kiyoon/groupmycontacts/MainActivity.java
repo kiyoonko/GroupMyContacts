@@ -63,13 +63,15 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
+
         setContentView(R.layout.activity_main); //turns xml into actual displayed on screen.
+        int category = 0; //this number will select one of our (currntly) three types.
         issues.add("Drunk");
         issues.add("Danger");
         issues.add("Lost");
         final Button btn_one;
         btn_one = (Button)findViewById(R.id.firstbutton);
-        btn_one.setText(issues.get(0));
+        btn_one.setText(issues.get(category));
 
         btn_one.setOnClickListener(new View.OnClickListener() {
 
@@ -78,13 +80,17 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
 
 
-                //call the method that would send the sms.
+                Intent intent = new Intent(MainActivity.this, secondpage.class);
+                startActivity(intent);
 
 
             }
         });
 
         final Button btn_two;
+
+        category=1;
+
         btn_two = (Button)findViewById(R.id.secondbutton);
         btn_two.setText(issues.get(1));
         btn_two.setOnClickListener(new View.OnClickListener()
@@ -93,12 +99,13 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v)
             {
-                //add the method that would send the sms
-
+                Intent intent = new Intent(MainActivity.this, secondpage1.class);
+                startActivity(intent);
             }
         });
 
         final Button btn_third;
+        category=2;
         btn_third = (Button)findViewById(R.id.thirdbutton);
         btn_third.setText(issues.get(2));
         btn_two.setOnClickListener(new View.OnClickListener()
@@ -107,8 +114,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v)
             {
-                // add the method that would send the sms.
-
+                Intent intent = new Intent(MainActivity.this, secondpage2.class);
+                startActivity(intent);
             }
         });
 
@@ -124,6 +131,7 @@ public class MainActivity extends AppCompatActivity {
                 Intent intent = new Intent(MainActivity.this, contactUpdate.class);
                 startActivity(intent);
             }
+
         });
 
 
@@ -163,6 +171,7 @@ public class MainActivity extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
+
 
 
 }
