@@ -69,9 +69,12 @@ public class MainActivity extends AppCompatActivity {
         issues.add("Drunk");
         issues.add("Danger");
         issues.add("Lost");
+
         final Button btn_one;
         btn_one = (Button)findViewById(R.id.firstbutton);
         btn_one.setText(issues.get(category));
+
+
 
         btn_one.setOnClickListener(new View.OnClickListener() {
 
@@ -82,7 +85,7 @@ public class MainActivity extends AppCompatActivity {
 
                 Intent intent = new Intent(MainActivity.this, secondpage.class);
                 startActivity(intent);
-
+                Log.v("myapp", "drunk");
 
             }
         });
@@ -101,6 +104,7 @@ public class MainActivity extends AppCompatActivity {
             {
                 Intent intent = new Intent(MainActivity.this, secondpage1.class);
                 startActivity(intent);
+                Log.v("myapp", "danger");
             }
         });
 
@@ -108,7 +112,7 @@ public class MainActivity extends AppCompatActivity {
         category=2;
         btn_third = (Button)findViewById(R.id.thirdbutton);
         btn_third.setText(issues.get(2));
-        btn_two.setOnClickListener(new View.OnClickListener()
+        btn_third.setOnClickListener(new View.OnClickListener()
         {
 
             @Override
@@ -116,17 +120,16 @@ public class MainActivity extends AppCompatActivity {
             {
                 Intent intent = new Intent(MainActivity.this, secondpage2.class);
                 startActivity(intent);
+                Log.v("myapp", "lost");
             }
         });
 
         final Button btn_contacts;
         btn_contacts = (Button)findViewById(R.id.update);
-        btn_two.setOnClickListener(new View.OnClickListener()
-        {
+        btn_contacts.setOnClickListener(new View.OnClickListener() {
 
             @Override
-            public void onClick(View v)
-            {
+            public void onClick(View v) {
                 // go to the other page
                 Intent intent = new Intent(MainActivity.this, contactUpdate.class);
                 startActivity(intent);

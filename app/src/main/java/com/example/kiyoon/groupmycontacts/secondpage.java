@@ -13,9 +13,9 @@ public class secondpage extends AppCompatActivity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.second_page1);
+        setContentView(R.layout.second_page);
 
-        Button textButton = (Button) findViewById(R.id.textButtonID1);
+        Button textButton = (Button) findViewById(R.id.textButtonID);
         textButton.setText("Text Contacts!");
 
         textButton.setOnClickListener(new View.OnClickListener() {
