@@ -13,7 +13,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="DRUNK"
+        android:text="DANGER"
         android:id="@+id/textView2"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="44dp"
@@ -25,14 +25,6 @@
         android:layout_height="wrap_content"
         android:layout_width="match_parent">
     </ListView>
-
-    <Button
-        android:layout_height="wrap_content"
-        android:layout_width="wrap_content"
-        android:layout_below="@+id/textView2"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:layout_above="@+id/btn_SendSMS" />
 
     <Button
         android:id="@+id/btn_SendSMS"

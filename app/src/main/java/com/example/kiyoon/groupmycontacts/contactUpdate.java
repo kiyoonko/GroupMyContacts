@@ -38,35 +38,9 @@ public class contactUpdate extends AppCompatActivity {
 
         //Firebase set up
         Firebase.setAndroidContext(this);
-        contactRef = new Firebase("https://groupmycontacts.firebaseio.com/").child("contacts");
+        contactRef = new Firebase("https://groupmycontacts.firebaseio.com/").child("users");
         ref = new Firebase("https://groupmycontacts.firebaseio.com");
         //Update data from Firebase for favorite contacts
-        contactRef.addChildEventListener(new ChildEventListener() {
-            @Override
-            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
-                Contact user = dataSnapshot.getValue(Contact.class);
-            }
-
-            @Override
-            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
-
-            }
-
-            @Override
-            public void onChildRemoved(DataSnapshot dataSnapshot) {
-
-            }
-
-            @Override
-            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
-
-            }
-
-            @Override
-            public void onCancelled(FirebaseError firebaseError) {
-                Log.e("Contact", "The read failed: " + firebaseError.getMessage());
-            }
-        });
 
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -91,15 +65,25 @@ public class contactUpdate extends AppCompatActivity {
             }
         });
 
-        /*clear.setOnClickListener(new View.OnClickListener(){
+        clear.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v){
-                contactRef
+            public void onClick(View v) {
+                AuthData authData = ref.getAuth();
+                if (authData != null) {
+                    //contactRef.push().setValue(person);
+                    ref.child("users").child(authData.getUid()).child("contacts").removeValue();
+                    Toast.makeText(getApplicationContext(), "List Deleted",
+                            Toast.LENGTH_LONG).show();
+
+                    finish();
+                } else {
+                    Toast.makeText(getApplicationContext(), "Something's wrong... this is deleting. ",
+                            Toast.LENGTH_LONG).show();
+
+                    Intent intent = new Intent(contactUpdate.this, UserAuth.class);
+                    startActivity(intent);
+                }
             }
-        }*/
+        });
     }
-
-
-
-
 }

@@ -2,6 +2,9 @@ package com.example.kiyoon.groupmycontacts;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -32,6 +35,7 @@ public class secondpage extends AppCompatActivity {
         Firebase.setAndroidContext(this);
         ref = new Firebase("https://groupmycontacts.firebaseio.com");
         final List<String> contacts = new ArrayList<String>();
+        final ArrayList<String> numbers = new ArrayList<String>();
 
         AuthData authData = ref.getAuth();
         if (authData != null) {
@@ -42,6 +46,7 @@ public class secondpage extends AppCompatActivity {
                     Contact user = dataSnapshot.getValue(Contact.class);
                     if (user.getCategory() == 0) {
                         contacts.add(user.getName() + " " + user.getPhoneNum());
+                        numbers.add(user.getPhoneNum());
                     }
                 }
 
@@ -72,12 +77,11 @@ public class secondpage extends AppCompatActivity {
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, android.R.id.text1, contacts);
         listView.setAdapter(adapter);
 
-        btnSendSMS = (Button) this.findViewById(R.id.btn_SendSMS);
+        Button btnSendSMS = (Button) this.findViewById(R.id.btn_SendSMS);
         btnSendSMS.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 Log.d("SMS", "Clicked the button!!");
-                String numbers[] = {"+19195970133", "+12407784399", "+17345459884"
-                };
+
                 for (String number : numbers) {
                     com.example.kiyoon.groupmycontacts.Util.sendSMS(number, "Your friend needs your help. Can you come? Respond with Yes or No. Yes will also provide his/her location", secondpage.this);
                 }

@@ -3,6 +3,11 @@
     package="com.example.kiyoon.groupmycontacts" >
 
     <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.SEND_SMS"/>
+    <uses-permission android:name="android.permission.RECEIVE_SMS"/>
+    <uses-permission android:name="android.READ_SMS"/>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
 
     <application
         android:allowBackup="true"
@@ -42,6 +47,7 @@
             android:label="@string/app_name" >
             <intent-filter >
                 <action android:name="android.intent.action.MAIN" />
+                <action android:name="android.provider.Telephony.SMS_RECIEVED"/>
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
 
