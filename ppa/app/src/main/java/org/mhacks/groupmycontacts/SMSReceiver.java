@@ -3,6 +3,8 @@ package org.mhacks.groupmycontacts;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.location.Location;
+import android.location.LocationListener;
+import android.location.LocationManager;
 import android.telephony.SmsManager;
 import android.telephony.SmsMessage;
 import android.util.Log;
@@ -19,12 +21,16 @@ import com.google.android.gms.location.LocationServices;
  * Created by morganhy on 9/12/15.
  */
 public class SMSReceiver extends BroadcastReceiver {
+
+    double longitude;
+    double latitude;
+
     public SMSReceiver(){}
 
     // Get the object of SmsManager
     final SmsManager sms = SmsManager.getDefault();
 
-    public void onReceive(Context context, Intent intent) {
+    public void onReceive(final Context context, Intent intent) {
         // Retrieves a map of extended data from the intent.
 
         final Bundle bundle = intent.getExtras();
@@ -40,7 +46,7 @@ public class SMSReceiver extends BroadcastReceiver {
                 {
 
                     SmsMessage currentMessage = SmsMessage.createFromPdu((byte[]) pdusObj[i]);
-                    String phoneNumber = currentMessage.getDisplayOriginatingAddress();
+                    final String phoneNumber = currentMessage.getDisplayOriginatingAddress();
 
                     String senderNum = phoneNumber;
                     String message = currentMessage.getDisplayMessageBody();
@@ -56,19 +62,34 @@ public class SMSReceiver extends BroadcastReceiver {
                         } else {
                             if (message.toLowerCase().equals("no")) {
                             } else if (message.toLowerCase().equals("yes")) {
-                               GoogleApiClient mGoogleApiClient = new GoogleApiClient.Builder(context)
-                                        .addApi(LocationServices.API)
-                                       //.addConnectionCallbacks(context)
-                                       //.addOnConnectionFailedListener(context)
-                                        .build();
-                                Location location =LocationServices.FusedLocationApi.getLastLocation(mGoogleApiClient);
-                                if (location != null) {
-                                    String latitude = String.valueOf(location.getLatitude());
-                                    String longitude = String.valueOf(location.getLongitude());
-                                    Util.sendSMS(phoneNumber, "Here is the location. We recommend that you call your friend in advance to check up." + latitude + "," + longitude, context);
-                                } else {
-                                    Util.sendSMS(phoneNumber, "Unable to find location of your friend", context);
-                                }
+                                LocationManager locationManager = (LocationManager) context.getSystemService(Context.LOCATION_SERVICE);
+                                locationManager.requestSingleUpdate(LocationManager.GPS_PROVIDER, new LocationListener() {
+                                    @Override
+                                    public void onLocationChanged(Location location) {
+                                        latitude = location.getLatitude();
+                                        longitude = location.getLongitude();
+                                        String latitude = String.valueOf(location.getLatitude());
+                                        String longitude = String.valueOf(location.getLongitude());
+                                        Util.sendSMS(phoneNumber, "Here is the location. We recommend that you call your friend in advance to check up." + latitude + "," + longitude, context);
+
+                                    }
+
+                                    @Override
+                                    public void onStatusChanged(String provider, int status, Bundle extras) {
+
+                                    }
+
+                                    @Override
+                                    public void onProviderEnabled(String provider) {
+
+                                    }
+
+                                    @Override
+                                    public void onProviderDisabled(String provider) {
+
+                                    }
+                                }, null);
+
                             } else {
                                 Util.sendSMS(phoneNumber, "Please reply with yes or no only", context);
                             }

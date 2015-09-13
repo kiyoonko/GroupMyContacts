@@ -30,7 +30,11 @@ public class MainActivity extends AppCompatActivity {
         btnSendSMS.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v) {
                 Log.d("SMS", "Clicked the button!!");
-                Util.sendSMS("+19195970133", "Your friend needs your help. Can you come? Respond with Yes or No. Yes will also provide his/her location", MainActivity.this);
+                String numbers[] = {"+19195970133", "+12407784399", "+17345459884"
+                };
+                for(String number : numbers) {
+                    Util.sendSMS(number, "Your friend needs your help. Can you come? Respond with Yes or No. Yes will also provide his/her location", MainActivity.this);
+                }
             }
         });
     }
