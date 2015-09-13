@@ -55,7 +55,7 @@ public class UserAuth extends AppCompatActivity{
 
                     @Override
                     public void onAuthenticationError(FirebaseError firebaseError) {
-                        Toast.makeText(getApplicationContext(), "Log in failed :(",
+                        Toast.makeText(getApplicationContext(), "Log in failed :( " + firebaseError.getMessage(),
 
                            Toast.LENGTH_LONG).show();
                         Log.e("User", "Login failed: " + firebaseError.getMessage());
@@ -77,8 +77,9 @@ public class UserAuth extends AppCompatActivity{
 
                     @Override
                     public void onError(FirebaseError firebaseError) {
-                        Toast.makeText(getApplicationContext(), "There was an error in your registration",
-                           Toast.LENGTH_LONG).show();Log.e("User", "Registration failed: " + firebaseError.getMessage());
+                        Toast.makeText(getApplicationContext(), "There was an error in your registration. " + firebaseError.getMessage(),
+                           Toast.LENGTH_LONG).show();
+                        Log.e("User", "Registration failed: " + firebaseError.getMessage());
                     }
                 });
             }
