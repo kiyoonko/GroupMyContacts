@@ -80,6 +80,36 @@ public class secondpage1 extends AppCompatActivity {
         btnSendSMS.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 Log.d("SMS", "Clicked the button!!");
+            usrRef.addChildEventListener(new ChildEventListener() {
+                @Override
+                public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                    Contact user = dataSnapshot.getValue(Contact.class);
+                    if (user.getCategory() == 1) {
+                        contacts.add(user.getName() + " " + user.getPhoneNum());
+                        numbers.add(user.getPhoneNum());
+                    }
+                }
+
+                @Override
+                public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+
+                }
+
+                @Override
+                public void onChildRemoved(DataSnapshot dataSnapshot) {
+
+                }
+
+                @Override
+                public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+
+                }
+
+                @Override
+                public void onCancelled(FirebaseError firebaseError) {
+
+                }
+            });
 
                 for (String number : numbers) {
                     com.example.kiyoon.groupmycontacts.Util.sendSMS(number, "Your friend needs your help. Can you come? Respond with Yes or No. Yes will also provide his/her location", secondpage1.this);
