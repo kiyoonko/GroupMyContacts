@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import com.firebase.client.AuthData;
 import com.firebase.client.ChildEventListener;
@@ -75,8 +76,14 @@ public class contactUpdate extends AppCompatActivity {
                     Contact person = new Contact(Name.getText().toString(), Number.getText().toString(), Cat.getSelectedItemPosition());
                     //contactRef.push().setValue(person);
                     ref.child("users").child(authData.getUid()).child("contacts").push().setValue(person);
+                    Toast.makeText(getApplicationContext(), "Contact added!",
+                            Toast.LENGTH_LONG).show();
+
                     finish();
                 } else {
+                    Toast.makeText(getApplicationContext(), "Redirecting to Log in Page",
+                            Toast.LENGTH_LONG).show();
+
                     Intent intent = new Intent(contactUpdate.this, UserAuth.class);
                     startActivity(intent);
                 }

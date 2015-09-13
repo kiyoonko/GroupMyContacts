@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.firebase.client.AuthData;
 import com.firebase.client.Firebase;
@@ -43,7 +44,8 @@ public class UserAuth extends AppCompatActivity{
                     @Override
                     public void onAuthenticated(AuthData authData) { /// login works here
                         // if our login is true we should go to the main page
-                        Intent intent = new Intent(UserAuth.this, MainActivity.class);
+                        Toast.makeText(getApplicationContext(), "Log in approved!",
+                                Toast.LENGTH_LONG).show();Intent intent = new Intent(UserAuth.this, MainActivity.class);
                         startActivity(intent);
 
                         System.out.println("User ID: " + authData.getUid() + ", Provider: " + authData.getProvider());
@@ -53,6 +55,9 @@ public class UserAuth extends AppCompatActivity{
 
                     @Override
                     public void onAuthenticationError(FirebaseError firebaseError) {
+                        Toast.makeText(getApplicationContext(), "Log in failed :(",
+
+                           Toast.LENGTH_LONG).show();
                         Log.e("User", "Login failed: " + firebaseError.getMessage());
                     }
                 });
@@ -66,12 +71,14 @@ public class UserAuth extends AppCompatActivity{
                 ref.createUser(email.getText().toString(), password.getText().toString(), new Firebase.ValueResultHandler<Map<String, Object>>() {
                     @Override
                     public void onSuccess(Map<String, Object> stringObjectMap) {
-                        System.out.println("Successfully created user account with uid: " + stringObjectMap.get("uid"));
+                        Toast.makeText(getApplicationContext(), "You have been registered!",
+                           Toast.LENGTH_LONG).show();System.out.println("Successfully created user account with uid: " + stringObjectMap.get("uid"));
                     }
 
                     @Override
                     public void onError(FirebaseError firebaseError) {
-                        Log.e("User", "Registration failed: " + firebaseError.getMessage());
+                        Toast.makeText(getApplicationContext(), "There was an error in your registration",
+                           Toast.LENGTH_LONG).show();Log.e("User", "Registration failed: " + firebaseError.getMessage());
                     }
                 });
             }
