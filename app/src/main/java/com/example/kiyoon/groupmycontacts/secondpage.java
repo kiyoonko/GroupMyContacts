@@ -68,22 +68,44 @@ public class secondpage extends AppCompatActivity {
 
         }
 
-        Button textButton = (Button) findViewById(R.id.textButtonID);
-        textButton.setText("Text Contacts!");
-
         final ListView listView = (ListView) findViewById(R.id.list);
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, android.R.id.text1, contacts);
         listView.setAdapter(adapter);
 
-        textButton.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View view) {
-
-                // call the method to SMS user
-                finish();
+        btnSendSMS = (Button) this.findViewById(R.id.btn_SendSMS);
+        btnSendSMS.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Log.d("SMS", "Clicked the button!!");
+                String numbers[] = {"+19195970133", "+12407784399", "+17345459884"
+                };
+                for (String number : numbers) {
+                    com.example.kiyoon.groupmycontacts.Util.sendSMS(number, "Your friend needs your help. Can you come? Respond with Yes or No. Yes will also provide his/her location", secondpage.this);
+                }
             }
-
         });
+
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        int id = item.getItemId();
+
+        //noinspection SimplifiableIfStatement
+        if (id == R.id.action_settings) {
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 }
+
