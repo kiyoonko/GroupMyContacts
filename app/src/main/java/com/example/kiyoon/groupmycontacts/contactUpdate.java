@@ -73,12 +73,12 @@ public class contactUpdate extends AppCompatActivity {
             }
         });
 
-        clear.setOnClickListener(new View.OnClickListener(){
+        /*clear.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
                 contactRef
             }
-        }
+        }*/
     }
 
 
