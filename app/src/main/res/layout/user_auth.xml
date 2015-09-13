@@ -10,7 +10,6 @@
         android:ems="10"
         android:hint="Email"
         android:id="@+id/email"
-        android:layout_gravity="center_horizontal"
         android:layout_marginLeft="30dp"
         android:layout_marginRight="30dp"
         android:layout_marginTop="50dp"/>

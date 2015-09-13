@@ -1,5 +1,6 @@
 package com.example.kiyoon.groupmycontacts;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -8,6 +9,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 
+import com.firebase.client.AuthData;
 import com.firebase.client.ChildEventListener;
 import com.firebase.client.DataSnapshot;
 import com.firebase.client.Firebase;
@@ -21,6 +23,7 @@ import java.util.ArrayList;
  */
 public class contactUpdate extends AppCompatActivity {
     Firebase contactRef;
+    Firebase ref;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,7 +38,7 @@ public class contactUpdate extends AppCompatActivity {
         //Firebase set up
         Firebase.setAndroidContext(this);
         contactRef = new Firebase("https://groupmycontacts.firebaseio.com/").child("contacts");
-
+        ref = new Firebase("https://groupmycontacts.firebaseio.com");
         //Update data from Firebase for favorite contacts
         contactRef.addChildEventListener(new ChildEventListener() {
             @Override
@@ -67,9 +70,17 @@ public class contactUpdate extends AppCompatActivity {
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Contact person = new Contact(Name.getText().toString(), Number.getText().toString(), Cat.getSelectedItemPosition());
-                contactRef.push().setValue(person);
-                finish();
+                AuthData authData = ref.getAuth();
+                if (authData != null) {
+                    Contact person = new Contact(Name.getText().toString(), Number.getText().toString(), Cat.getSelectedItemPosition());
+                    //contactRef.push().setValue(person);
+                    ref.child("users").child(authData.getUid()).child("contacts").push().setValue(person);
+                    finish();
+                } else {
+                    Intent intent = new Intent(contactUpdate.this, UserAuth.class);
+                    startActivity(intent);
+                }
+
             }
         });
 
