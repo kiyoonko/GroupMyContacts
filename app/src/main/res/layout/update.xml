@@ -5,7 +5,7 @@
     android:paddingRight="16dp"
     android:paddingTop="16dp"
     android:paddingBottom="16dp"
-    android:background="@color/peach">
+    android:background="#b29eff">
 
     <EditText
         android:layout_width="match_parent"

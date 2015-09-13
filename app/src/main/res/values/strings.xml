@@ -11,7 +11,7 @@
         <item>Lost</item>
     </string-array>
 
-    <color name="peach">#FFFFCC</color>
+    <color name="peach">#b29eff</color>
     <color name="red">#ff0000</color>
 
 </resources>

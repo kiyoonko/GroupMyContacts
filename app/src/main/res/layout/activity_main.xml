@@ -11,7 +11,8 @@
         android:layout_height="wrap_content"
         android:id="@+id/textView"
         android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:textColor="#810042" />
 
     <Button
         android:layout_width="match_parent"
@@ -22,7 +23,9 @@
         android:layout_alignLeft="@+id/secondbutton"
         android:layout_alignStart="@+id/secondbutton"
         android:layout_marginTop="10dp"
-        android:textSize="30sp"/>
+        android:textSize="30sp"
+        android:textColor="#FF531E38"
+        android:textStyle="bold" />
 
     <Button
         android:layout_width="match_parent"
@@ -32,7 +35,9 @@
         android:layout_below="@+id/firstbutton"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="10dp"
-        android:textSize="30sp" />
+        android:textSize="30sp"
+        android:textColor="#531e38"
+        android:textStyle="bold" />
 
     <Button
         android:layout_width="match_parent"
@@ -42,7 +47,9 @@
         android:layout_marginTop="10dp"
         android:layout_below="@+id/secondbutton"
         android:layout_centerHorizontal="true"
-        android:textSize="30sp" />
+        android:textSize="30sp"
+        android:textColor="#FF531E38"
+        android:textStyle="bold" />
 
     <Button
         style="?android:attr/buttonStyleSmall"
@@ -52,7 +59,8 @@
         android:id="@+id/update"
         android:layout_marginTop="10dp"
         android:layout_alignParentBottom="true"
-        android:layout_below="@id/thirdbutton"/>
+        android:layout_below="@id/thirdbutton"
+        android:textColor="#4f0030" />
 
 
 </RelativeLayout>
