@@ -33,20 +33,19 @@
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="20dp"/>
 
-    <TextView
+    <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Forgot your password?"
-        android:id="@+id/forgot_password"
+        android:text="Register"
+        android:id="@+id/register"
         android:layout_gravity="center_horizontal" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Don&apos;t have account yet? Click here!"
-        android:id="@+id/register"
+        android:text="Forgot your password?"
+        android:id="@+id/forgot_password"
         android:layout_gravity="center_horizontal" />
 
 </LinearLayout>

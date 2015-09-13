@@ -29,7 +29,10 @@ public class UserAuth extends AppCompatActivity{
         final EditText password = (EditText) findViewById(R.id.password);
         final Button login = (Button) findViewById(R.id.login);
         final TextView forgot_password = (TextView) findViewById(R.id.forgot_password);
-        final TextView register = (TextView) findViewById(R.id.register);
+        final Button register = (Button) findViewById(R.id.register);
+
+        //Set up Firebase
+        Firebase.setAndroidContext(this);
         ref = new Firebase("https://groupmycontacts.firebaseio.com");
 
         //Login function
