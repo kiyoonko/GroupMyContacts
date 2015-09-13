@@ -83,7 +83,7 @@ public class secondpage2 extends AppCompatActivity {
                 Log.d("SMS", "Clicked the button!!");
 
                 for (String number : numbers) {
-                    com.example.kiyoon.groupmycontacts.Util.sendSMS(number, "Your friend needs your help. Can you come? Respond with Yes or No. Yes will also provide his/her location", secondpage2.this);
+                    com.example.kiyoon.groupmycontacts.Util.sendSMS(number, "Hey! GroupMyContact here. Your friend is lost! Oh no :( Can you come and help?", secondpage2.this);
                 }
             }
         });

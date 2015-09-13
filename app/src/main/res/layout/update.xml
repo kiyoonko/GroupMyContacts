@@ -25,14 +25,16 @@
         android:ems="10"
         android:id="@+id/phoneNum"
         android:layout_marginLeft="30dp"
-        android:layout_marginRight="30dp"/>
+        android:layout_marginRight="30dp"
+        android:layout_marginBottom="30dp"/>
 
     <Spinner
         android:id="@+id/categories_spinner"
-        android:layout_width="fill_parent"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:entries="@array/category_arrays"
-        android:prompt="@string/category_prompt" />
+        android:prompt="@string/category_prompt"
+        android:layout_marginBottom="30dp"/>
 
     <Button
         android:layout_width="match_parent"
@@ -43,7 +45,9 @@
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text = "clear selected list"
-        android:id="@+id/clearlist"/>
+        android:text = "clear all contacts"
+        android:id="@+id/clearlist"
+        android:background="@color/red"
+        android:layout_alignParentBottom = "true"/>
 
 </LinearLayout>

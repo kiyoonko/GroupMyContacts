@@ -13,6 +13,8 @@ import android.telephony.SmsMessage;
 import android.util.Log;
 import android.widget.Toast;
 
+import com.firebase.client.Firebase;
+
 
 /**
  * Created by morganhy on 9/12/15.
@@ -23,7 +25,11 @@ public class SMSReceiver extends BroadcastReceiver {
     double latitude;
 
     public SMSReceiver(){}
-
+    Firebase ref;
+    Firebase usrRef;
+    /**
+     * Implementation is to be done later. Add Firebase references. 
+     */
     // Get the object of SmsManager
     final SmsManager sms = SmsManager.getDefault();
 

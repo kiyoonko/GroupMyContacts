@@ -112,7 +112,7 @@ public class secondpage1 extends AppCompatActivity {
             });
 
                 for (String number : numbers) {
-                    com.example.kiyoon.groupmycontacts.Util.sendSMS(number, "Your friend needs your help. Can you come? Respond with Yes or No. Yes will also provide his/her location", secondpage1.this);
+                    com.example.kiyoon.groupmycontacts.Util.sendSMS(number, "Hey! GroupMyContact here. Your friend is feeling threatened. Can you come and help?", secondpage1.this);
                 }
             }
         });
