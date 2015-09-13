@@ -1,5 +1,6 @@
 package com.example.kiyoon.groupmycontacts;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -37,8 +38,14 @@ public class UserAuth extends AppCompatActivity{
             public void onClick(View v) {
                 ref.authWithPassword(email.getText().toString(), password.getText().toString(), new Firebase.AuthResultHandler() {
                     @Override
-                    public void onAuthenticated(AuthData authData) {
+                    public void onAuthenticated(AuthData authData) { /// login works here
+                        // if our login is true we should go to the main page
+                        Intent intent = new Intent(UserAuth.this, MainActivity.class);
+                        startActivity(intent);
+
                         System.out.println("User ID: " + authData.getUid() + ", Provider: " + authData.getProvider());
+
+
                     }
 
                     @Override
